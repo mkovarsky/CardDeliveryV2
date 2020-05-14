@@ -20,15 +20,15 @@ public class CardDeliveryFormTest {
     void shouldSubmit() {
         open("http://localhost:9999");
         SelenideElement form = $("form[class='form form_size_m form_theme_alfa-on-white']");
-        form.$("[data-ru.netology.test-id=city] input").setValue(dataGenerator.generateCity());
-        form.$("[data-ru.netology.test-id=name] input").setValue(dataGenerator.generateName());
-        form.$("[data-ru.netology.test-id=phone] input").setValue(dataGenerator.generatePhone());
-        form.$("[data-ru.netology.test-id=agreement]").click();
+        form.$("[data-test-id=city] input").setValue(dataGenerator.generateCity());
+        form.$("[data-test-id=name] input").setValue(dataGenerator.generateName());
+        form.$("[data-test-id=phone] input").setValue(dataGenerator.generatePhone());
+        form.$("[data-test-id=agreement]").click();
         form.$(".button").click();
-        form.$("[data-ru.netology.test-id=date] input").sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.DELETE);
-        form.$("[data-ru.netology.test-id=date] input").sendKeys(dataGenerator.futureDate(7));
+        form.$("[data-test-id=date] input").sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.DELETE);
+        form.$("[data-test-id=date] input").sendKeys(dataGenerator.futureDate(7));
         $$("span.button__text").find(exactText("Запланировать")).click();
         $$("span.button__text").find(exactText("Перепланировать")).click();
-        $("[data-ru.netology.test-id='success-notification']").shouldBe(visible);
+        $("[data-test-id='success-notification']").shouldBe(visible);
     }
 }
